@@ -2,7 +2,7 @@ package org.example.threads;
 
 public class Demonthredexample extends Thread {
     @Override
-    public void run()  {
+    public void run() {
         while (true) {
             try {
                 Thread.sleep(1000);

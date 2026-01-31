@@ -1,4 +1,5 @@
 package org.example.interview;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -17,8 +18,13 @@ public final class ImmutableClass {
         this.subjects = new ArrayList<>(subjects);
     }
 
-    public int getId() { return id; }
-    public String getName() { return name; }
+    public int getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
 
     /**
      * Defensive copy in getter: prevents callers from modifying
@@ -31,22 +37,22 @@ public final class ImmutableClass {
     }
 }
 
-class Main{
-     static void main() {
-       ImmutableClass immutableClass = new ImmutableClass(1,"chandra", List.of(new String[]{"Maths", "Physics"}));
-       List<String> strlist = immutableClass.getSubjects();
-       //strlist.add("Chemistry");
-       System.out.println(strlist);
+class Main {
+    static void main() {
+        ImmutableClass immutableClass = new ImmutableClass(1, "chandra", List.of(new String[]{"Maths", "Physics"}));
+        List<String> strlist = immutableClass.getSubjects();
+        //strlist.add("Chemistry");
+        System.out.println(strlist);
 
-       // Try with resources example.
-       try(Scanner sc = new Scanner(System.in)) {
-          while (sc.hasNextLine()) {
-              String s = sc.nextLine();
-              if(s.contains("break"))
-                  break;
-              System.out.println(s);
+        // Try with resources example.
+        try (Scanner sc = new Scanner(System.in)) {
+            while (sc.hasNextLine()) {
+                String s = sc.nextLine();
+                if (s.contains("break"))
+                    break;
+                System.out.println(s);
 
-          }
-       }
+            }
+        }
     }
 }

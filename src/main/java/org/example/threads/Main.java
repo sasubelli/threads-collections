@@ -2,8 +2,8 @@ package org.example.threads;
 
 
 public class Main {
-     static void main() throws InterruptedException {
-        System.out.println("Active thread count"+Thread.activeCount());
+    static void main() throws InterruptedException {
+        System.out.println("Active thread count" + Thread.activeCount());
 
         System.out.print("Hello and welcome!");
         Threadexample threadexample = new Threadexample();
@@ -20,9 +20,9 @@ public class Main {
         Demonthredexample demonthredexample = new Demonthredexample();
         //setting up demon thread.
         demonthredexample.setDaemon(true);
-       demonthredexample.start();
+        demonthredexample.start();
 
-        System.out.println("Active thread count"+Thread.activeCount());
+        System.out.println("Active thread count" + Thread.activeCount());
 
         threadexample.join();
         runnable.join();
@@ -32,7 +32,7 @@ public class Main {
             System.out.println("i = " + i);
         }
         Thread.sleep(1000);
-System.out.println("Active thread count"+Thread.activeCount());
-       // demonthredexample.start();
+        System.out.println("Active thread count" + Thread.activeCount());
+        // demonthredexample.start();
     }
 }

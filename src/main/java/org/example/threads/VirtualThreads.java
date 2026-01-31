@@ -11,18 +11,18 @@ public class VirtualThreads {
             System.out.println("Current Thread: " + Thread.currentThread());
 
         };
-        Thread vThread = Thread.ofVirtual().start( task);
+        Thread vThread = Thread.ofVirtual().start(task);
         vThread.join();
         //Thread.sleep(1000);
 
-        Callable<Object > callable = new Callable<Object>() {
+        Callable<Object> callable = new Callable<Object>() {
             public Object call() throws Exception {
 
                 return "Hello from a Virtual Thread! from callable -----`";
             }
         };
 
-        ExecutorService executor =Executors.newVirtualThreadPerTaskExecutor();
+        ExecutorService executor = Executors.newVirtualThreadPerTaskExecutor();
 
         Future<Double> future = executor.submit(() -> {
             // This is a Callable
@@ -33,5 +33,5 @@ public class VirtualThreads {
         Double result = future.get();
         System.out.println(result);
         executor.close();
-  }
+    }
 }

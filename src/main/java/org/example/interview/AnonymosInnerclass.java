@@ -1,12 +1,14 @@
 package org.example.interview;
-interface A{
-    class  B {
-        void printMessage(int a){
+
+interface A {
+    class B {
+        void printMessage(int a) {
             System.out.println(a);
         }
     }
 }
-public class AnonymosInnerclass  implements A{
+
+public class AnonymosInnerclass implements A {
 
     public AnonymosInnerclass() {
         B b = new B();
@@ -14,7 +16,7 @@ public class AnonymosInnerclass  implements A{
     }
 
     static void main() {
-        AnonymosInnerclass  a = new AnonymosInnerclass();
+        AnonymosInnerclass a = new AnonymosInnerclass();
 
     }
 }

@@ -1,31 +1,32 @@
 package org.example.interview;
 
 enum Operation {
-    ADD{
+    ADD {
         public int execute(int a, int b) {
             return a + b;
         }
     },
-    SUB{
+    SUB {
         public int execute(int a, int b) {
             return a - b;
         }
     },
-    MUL{
+    MUL {
         public int execute(int a, int b) {
             return a * b;
         }
     },
-    DIV{
+    DIV {
         public int execute(int a, int b) {
             return a / b;
         }
     };
-    public abstract int execute(int x, int y) ;
+
+    public abstract int execute(int x, int y);
 }
 
 public class EnumAbstractmethod {
-     static void main() {
+    static void main() {
         Operation op = Operation.ADD;
         int a = op.execute(1, 2);
         System.out.println(a);

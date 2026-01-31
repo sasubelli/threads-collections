@@ -1,14 +1,15 @@
 package org.example.leetcode;
 
 public class Leetcodelongeststring {
-     static void main(String[] args) {
-    Leetcodelongeststring leetcode = new Leetcodelongeststring();
-    System.out.printf(String.valueOf( leetcode.lengthOfLongestSubstring("qwewrdxfdfnf")));
+    static void main(String[] args) {
+        Leetcodelongeststring leetcode = new Leetcodelongeststring();
+        System.out.printf(String.valueOf(leetcode.lengthOfLongestSubstring("qwewrdxfdfnf")));
     }
+
     //Given a string s, find the length of the longest substring without duplicate characters.
     public int lengthOfLongestSubstring(String s) {
         int max = 0;
-        if(s.length()>1) {
+        if (s.length() > 1) {
             for (int i = 0; i < s.length(); i++) {
                 int left = 0;
                 String sb;
@@ -20,13 +21,12 @@ public class Leetcodelongeststring {
                     if (sb.contains(s.substring(j, j + 1))) {
                         break;
                     }
-if(j == s.length()-1){
-    max = Math.max(max, left+1);
-}
+                    if (j == s.length() - 1) {
+                        max = Math.max(max, left + 1);
+                    }
                 }
             }
-        }
-        else {
+        } else {
             max = s.length();
         }
         return max;
