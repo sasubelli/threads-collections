@@ -1,8 +1,6 @@
-package org.example.collections;
+package org.example.streams;
 
-import java.util.AbstractMap;
-import java.util.ArrayList;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 
 
@@ -19,7 +17,7 @@ public class ListToMap {
         listToMap.add(6);
         listToMap.add(7);
         //convert list o map  Stream
-        Map<Integer, Integer> mapvarible =
+        Map<Integer, Integer> variable =
                 //Creates a Stream from the collection listToMap
                 listToMap.stream()
                         //Converts Stream<Integer> → IntStream
@@ -33,10 +31,28 @@ public class ListToMap {
                         .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
 
 
-        System.out.println(mapvarible);
+        System.out.println(variable);
         Map<Integer, Integer> mapvar = listToMap.stream().mapToInt(Integer::intValue)
                 .mapToObj(x -> new AbstractMap.SimpleEntry<>(x, x * x))
                 .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
         System.out.println(mapvar);
+
+        ArrayList<String> listStrtoMap = new ArrayList<>();
+        listStrtoMap.add("One");
+        listStrtoMap.add("Two");
+        listStrtoMap.add(null);
+        listStrtoMap.add("Three");
+        listStrtoMap.add("Four");
+        Map<Integer,String> mapstring = new HashMap<>();
+        for(String s: listStrtoMap){
+            if(s==null){
+                mapstring.put(0, null);
+            }else
+                mapstring.put(s.length(), s) ;
+
+        }
+
+        System.out.println(mapstring);
+
     }
 }

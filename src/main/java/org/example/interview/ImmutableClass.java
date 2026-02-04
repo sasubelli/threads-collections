@@ -1,7 +1,6 @@
 package org.example.interview;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
 
@@ -33,7 +32,7 @@ public final class ImmutableClass {
     public List<String> getSubjects() {
         //violation code commented
         //return new ArrayList<>(subjects);
-        return Collections.unmodifiableList(new ArrayList<>(subjects));
+        return List.copyOf(subjects);
     }
 }
 
@@ -41,7 +40,7 @@ class Main {
     static void main() {
         ImmutableClass immutableClass = new ImmutableClass(1, "chandra", List.of(new String[]{"Maths", "Physics"}));
         List<String> strlist = immutableClass.getSubjects();
-        //strlist.add("Chemistry");
+     //   strlist.add("Chemistry");
         System.out.println(strlist);
 
         // Try with resources example.
