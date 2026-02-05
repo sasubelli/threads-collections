@@ -1,18 +1,16 @@
 package org.example.streams;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
 public class StringManpulation {
-    public static void main(String[] args) {
-        List<String> listOfStrings = new ArrayList<>();
-        listOfStrings.add("abcdad");
-        listOfStrings.add("b");
-        listOfStrings.add("abc");
-        listOfStrings.stream().forEach(System.out::println);
+     static void main() {
+        List<List<String>> listOfStrings = new ArrayList<>();
+        listOfStrings.add(Arrays.asList( "abcdad","qwewr","abcdad"));
+        listOfStrings.add(Arrays.asList( "b","cd"));
+        listOfStrings.add(Arrays.asList( "abc","sde","b","abc"));
+        listOfStrings.forEach(System.out::println);
 
         String input = "advancedstreams";
 
@@ -24,5 +22,9 @@ map.entrySet().forEach(System.out::println);
                 .mapToObj(c -> (char) c)
                 .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
         System.out.println(charFrequencies);
+
+      Map<String, Long> list =  listOfStrings.stream().flatMap(List::stream)
+                .collect(Collectors.groupingBy(Function.identity(),Collectors.counting()));
+                System.out.println(list.entrySet().stream().filter(e -> e.getValue() > 1).collect(Collectors.toList()));
     }
 }
