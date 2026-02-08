@@ -1,9 +1,7 @@
-package org.example.interview;
+package org.example.streams;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class StringRepetCount {
     static void main(String[] args) {
@@ -19,6 +17,12 @@ public class StringRepetCount {
             }
         }
         System.out.println(key + " : " + value);
+
+        //Stream version of writing
+        Map<Character, Long> map2 = str1.chars()
+                .mapToObj(c -> (char) c).collect(Collectors.groupingBy(c -> c, Collectors.counting()));
+        System.out.println(map2.entrySet().stream().sorted(Map.Entry.comparingByValue()).toList().reversed().stream().findFirst());
+
         Integer temp = 128;
         Integer tempb = 128;
 

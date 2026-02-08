@@ -53,6 +53,9 @@ public class ListToMap {
         }
 
         System.out.println(mapstring);
+        Map<Object, List<String>> mapstring2 = listStrtoMap.stream()
+                .collect(Collectors.groupingBy(String::valueOf));
+        System.out.println(mapstring2);
 
     }
 }
