@@ -21,7 +21,8 @@ public class StringRepetCount {
         //Stream version of writing
         Map<Character, Long> map2 = str1.chars()
                 .mapToObj(c -> (char) c).collect(Collectors.groupingBy(c -> c, Collectors.counting()));
-        System.out.println(map2.entrySet().stream().sorted(Map.Entry.comparingByValue()).toList().reversed().stream().findFirst());
+        System.out.println(map2.entrySet().stream().sorted(Map.Entry.comparingByValue()).toList()
+                .reversed().stream().findFirst());
 
         Integer temp = 128;
         Integer tempb = 128;
