@@ -3,7 +3,7 @@ package org.example.streams;
 import java.util.*;
 import java.util.stream.Collectors;
 
-public class StringRepetCount {
+public class StringRepeatCount {
     static void main(String[] args) {
         String str1 = "adbcwersadxccvdccc$$$$$$$$$$$$$$####";
         int value = 0;

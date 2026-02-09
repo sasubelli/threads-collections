@@ -7,7 +7,7 @@ import java.util.Map;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
-public class StringManpulation {
+public class StringManipulation {
     static void main() {
         List<List<String>> listOfStrings = new ArrayList<>();
         listOfStrings.add(Arrays.asList("abcdad", "qwewr", "abcdad"));
