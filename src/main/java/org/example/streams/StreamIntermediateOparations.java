@@ -34,16 +34,16 @@ public class StreamIntermediateOparations {
         System.out.println("Final Result:");
         result.forEach(System.out::println);
 
-        List<String> inerlis = new ArrayList<>();
+        List<String> interline = new ArrayList<>();
         List<String> result1 = listOfLists.stream()
                 .flatMap(List::stream)
                 .filter(s -> s.contains("S"))
                 .map(String::toUpperCase)
                 .distinct()
-                .sorted().peek(inerlis::add)
+                .sorted().peek(interline::add)
                 .toList();
         System.out.println("Intermediate Results:");
-        inerlis.forEach(System.out::println);
+        interline.forEach(System.out::println);
         System.out.println("Final Result:");
         result1.forEach(System.out::println);
         System.out.println(" Results:  "+ result1);
