@@ -1,13 +1,11 @@
 package org.example.streams;
 
-import com.sun.jdi.Value;
-
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
 public class EvenOddbasedList {
-    public static void main(String[] args) {
+    static void main() {
         List<Integer> numbers = List.of(1, 2, 3, 4, 5, 6, 7, 8, 9);
         numbers.stream().filter(number -> number % 2 == 0).forEach(System.out::println);
         numbers.stream().filter(number -> number % 2 != 0).forEach(System.out::println);
