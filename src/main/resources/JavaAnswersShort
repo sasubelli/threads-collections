@@ -2,11 +2,10 @@
 Stack vs. Queue: A Stack is LIFO (Last-In-First-Out); a Queue is FIFO (First-In-First-Out).
 Boolean operations: Use && (AND), || (OR), and ! (NOT) to evaluate logical expressions.
 Short circuits in Boolean operations: In A && B, if A is false, B is not evaluated. In A || B, if A is true, B is not evaluated.
-Complexity of algorithms: Measured by how time or space requirements grow as input size
- increases.
-Big O notation: A mathematical notation (
-,
-, etc.) used to describe the upper bound of an algorithm's complexity.
+
+Complexity of algorithms: Measured by how time or space requirements grow as input size increases.
+Big O notation: A mathematical notation (,, etc.) used to describe the upper bound of an algorithm's complexity.
+
 Trees: Non-linear data structures consisting of nodes with a parent-child relationship (e.g., Binary Tree).
 Graphs: Sets of nodes (vertices) connected by edges; can be directed, undirected, weighted, or unweighted.
 Ways to traverse graph: BFS (Breadth-First Search) using a queue and DFS (Depth-First Search) using recursion or a stack.
@@ -20,8 +19,7 @@ Self balanced trees (Red-black, AVL, Splay): Trees that automatically adjust the
 Search in binary tree: Navigating through nodes based on value;
  if balanced,
  if unbalanced.
-Linear-time sorting (Count sort): An integer sorting algorithm that operates in
- by counting occurrences of each unique value.
+Linear-time sorting (Count sort): An integer sorting algorithm that operates in by counting occurrences of each unique value.
 Sorting of linked list: Best performed using Merge Sort because it doesn't require random access to elements.
 Prefix and suffix trees: Specialized trees (Tries) used for efficient string pattern matching and searching.
 Describe heap: A complete binary tree where the root is either the maximum (Max-heap) or minimum (Min-heap) of all elements.
@@ -34,6 +32,7 @@ Recursion/looping from bottom-up: The two ways to implement DP; bottom-up (loopi
 How would you fix a cyclic dependency: Use Setter Injection, the @Lazy annotation, or move shared logic to a third "bridge" class.
 Difference between static and dynamic typing: Static checks types at compile-time (Java); Dynamic checks types at runtime (Python).
 Duck typing: A concept where an object's suitability is determined by the presence of certain methods rather than its actual type.
+
 3. Collections
 General collection interfaces: Collection, Set, Map, List, Queue, SortedSet, SortedMap.
 Interfaces extending Collection: List, Set, and Queue all extend the Collection interface.
@@ -50,6 +49,8 @@ WeakHashMap: A map where entries are automatically removed when the key is no lo
 IdentityHashMap: A map that uses reference equality (==) instead of object equality (.equals()) for comparing keys.
 Iterator and modification of a List: Modifying a collection directly while iterating via an iterator causes a ConcurrentModificationException.
 Collections with safe iterators: CopyOnWriteArrayList and CopyOnWriteArraySet allow modification during iteration by creating a fresh copy.
+
+
 4. Java Basics
 Length in bytes/max value for primitives: byte(1), short(2), int(4), long(8), float(4), double(8), char(2), boolean(1-bit/JVM).
 'this' and 'super' keywords: this refers to the current object; super refers to the immediate parent object.
@@ -64,6 +65,7 @@ Difference between overriding and overloading: Overloading is same name/differen
 How can we replace multi-inheritance: By using Interfaces, as a Java class can implement an unlimited number of interfaces.
 Can interface inherit from different interface: Yes, an interface can extend multiple other interfaces.
 Regular vs. static initialization blocks: static blocks run once when the class loads; regular blocks run every time an instance is created.
+
 5. Exceptions
 Checked vs. unchecked exceptions: Checked must be handled at compile-time; Unchecked (Runtime) do not require explicit handling.
 Difference in Error and UncheckedException: Error represents serious JVM problems (e.g., StackOverflow); UncheckedException represents logic errors.
@@ -76,13 +78,14 @@ What is Multi-Catch: Catching multiple unrelated exceptions in one block: catch 
 What is try-with-resources: A try statement that declares one or more resources (like FileReader) that are closed automatically.
 What are Suppressed exceptions: Exceptions that were thrown but "suppressed" because another exception was already in flight during a close operation.
 NoClassDefFoundError vs ClassNotFoundException: ClassNotFound is a checked exception (missing string name); NoClassDefFound is an Error (missing bytecode at runtime).
+
 6. Memory & GC
 How is virtual heap space divided: Divided into Young Generation (Eden, Survivor spaces) and Old Generation.
 Difference between float and BigDecimal: float is a 32-bit approximation; BigDecimal is an object used for exact decimal math (financials).
 Java object references: Strong (default), Soft (cleared if memory low), Weak (cleared on next GC), and Phantom.
 What is deep copy: Creating a new object and also creating new copies of every object referenced by the original.
 Disadvantages of setting heap size too high: Increases the duration of "Stop the World" Garbage Collection pauses.
-Utilities for JVM monitoring: jconsole, jvisualvm, jmap, jstack, and jstat.
+Utilities for JVM monitoring: J-console, j-visual-vm, j-map, j-stack, and j-stat.
 How to force GC to be executed: You can suggest it with System.gc(), but the JVM is not obligated to run it immediately.
 Garbage collection principles: Identifying unreachable objects and reclaiming their memory automatically.
 What are memory leaks: Occur when objects are no longer used but are still referenced, preventing the GC from reclaiming them.
@@ -93,6 +96,8 @@ GC implementations: Serial (single thread), Parallel (multiple threads), G1 (reg
 Memory model in JVM: Defines how threads interact through memory and the rules for "happens-before" consistency.
 Perm Space vs Metadata space: In Java 8, PermGen (fixed size in heap) was replaced by Metaspace (native memory).
 What are G1 or C4 garbage collectors: G1 is a region-based collector for large heaps; C4 (Azul) is a continuously concurrent, pauseless collector.
+
+
 7. Modern Java
 Parameterized/generic type: Types that allow classes/interfaces to be used with different types (e.g., List<T>).
 Autoboxing advantages/pitfalls: Advantage: cleaner code; Pitfall: potential NullPointerException and performance overhead.
@@ -106,10 +111,11 @@ What is default method: A method in an interface that has an implementation, all
 What is stream API: A functional approach to processing collections of data in a declarative way.
 What is Lambda expression: An anonymous function that allows you to treat code as data (functional programming).
 How to create custom annotation: Use @interface and specify @Retention and @Target.
-What happens with lambda after compile time: It is typically converted into an invokedynamic call site by the JVM.
+What happens with lambda after compile time: It is typically converted into an invoke dynamic call site by the JVM.
 What are the new features of Java 9: Module System (Project Jigsaw), JShell (REPL), and private methods in interfaces.
-HashMap changes in Java 8: If a bucket exceeds 8 entries, the linked list converts into a Red-Black Tree to improve performance to
-.
+HashMap changes in Java 8: If a bucket exceeds 8 entries, the linked list converts into a Red-Black Tree to improve performance to O(log n)
+
+
 8. Multithreading
 Thread vs Runnable: Thread is a class; Runnable is an interface. Using Runnable is preferred for better design.
 run() vs start(): run() executes the code in the current thread; start() creates a new thread to execute the code.
@@ -135,10 +141,12 @@ thenApply, thenCompose, thenAccept: thenApply maps a result; thenCompose flatten
 
 9. OOP (Object Oriented Programming)
 Inheritance vs Composition: Inheritance is an "is-a" relationship (tightly coupled); Composition is a "has-a" relationship (loosely coupled and usually preferred).
-Name OOD principles that you know: DRY (Don't Repeat Yourself), KISS (Keep It Simple, Stupid), YAGNI (You Ain't Gonna Need It), and SOLID.
+Name OOD principles that you know: DRY (Don't Repeat Yourself), KISS (Keep It Simple, Stupid), Y-AGNI (You Ain't Gonna Need It), and SOLID.
 Do you know SOLID principles (describe one of them): Yes; for example, Single Responsibility Principle states a class should have only one reason to change.
 Coupling & Cohesion: Coupling is the degree of interdependence between modules (aim for low); Cohesion is how closely the functions inside a module relate (aim for high).
 Describe all SOLID principles: Single Responsibility, Open/Closed (open for extension, closed for modification), Liskov Substitution (subtypes must be substitutable), Interface Segregation (small specific interfaces), Dependency Inversion (depend on abstractions).
+
+
 10. Design Patterns
 Façade/Proxy/Decorator/Strategy/Observer: Façade (simple interface to complex system), Proxy (placeholder for another object), Decorator (adds behavior dynamically), Strategy (encapsulates algorithms), Observer (notifies dependents of state changes).
 Which patterns do you use in a daily basis: Usually Singleton (for services), Strategy (for varying logic), and Builder (for complex objects).
@@ -150,11 +158,15 @@ Difference between adapter and decorator: Adapter changes an interface to be com
 Explain "Builder" design pattern: Separates the construction of a complex object from its representation, allowing for more readable and flexible object creation.
 Enterprise Integration Patterns: Patterns like Message Router, Content-Based Router, and Dead Letter Channel used for integrating different systems (e.g., via Camel or Spring Integration).
 Architectural Patterns: High-level strategies like MVC (Model-View-Controller), Microservices, Layered Architecture, and Hexagonal (Ports and Adapters).
+
+
 11. Clean Code
 How do you identify good code: It is readable, self-explanatory, has meaningful names, small methods, and is covered by unit tests.
 Average lines per method & class: Methods should ideally be under 20 lines; classes should ideally be under 200–300 lines (SRP focused).
 Is it a problem to have comments in code: Yes, if they explain "what" the code does (code should be self-documenting); they are okay for explaining "why" a non-obvious decision was made.
 Package structure (feature vs layer): Package per feature is better for modularity and microservice readiness; Package per layer is traditional but can lead to "big ball of mud" coupling.
+
+
 12. Testing
 TDD steps: Red (write failing test), Green (write minimal code to pass), Refactor (improve code quality).
 Experience with testing libraries: JUnit (standard runner), TestNG (advanced features), Spock (Groovy-based, very readable BDD style).
@@ -163,6 +175,8 @@ What is async/await: Syntactic sugar for Promises, making asynchronous code look
 What are WeakMap and WeakSet: Collections where keys (WeakMap) or values (WeakSet) are weakly held, meaning they don't prevent garbage collection.
 What is tail call optimization: A compiler feature where a recursive call in the tail position doesn't increase the stack depth (not natively in standard JVM).
 What is BDD: Behavior-Driven Development; it focuses on the behavior of the system from the user's perspective (Given/When/Then).
+
+
 13. Spring
 Basic idea of IoC: Instead of the programmer creating objects, the Spring Container manages them and "injects" them where needed, reducing coupling.
 Spring configuration file: Historically XML (<bean id="..." />), but now mostly Java Config (@Configuration and @Bean methods).
@@ -177,6 +191,8 @@ AOP integration: Spring uses Dynamic Proxies or CGLIB to intercept method calls 
 Integrate Hibernate with HibernateDaoSupport: A legacy helper class that simplified Hibernate data access (now mostly replaced by Spring Data JPA).
 Beans lifecycle: Instantiate -> Populate -> Aware interfaces -> PostProcessor -> @PostConstruct -> Init method -> Ready -> @PreDestroy -> Destroy method.
 Propagation types: REQUIRED (default), REQUIRES_NEW, SUPPORTS, MANDATORY, NEVER, NOT_SUPPORTED, NESTED.
+
+
 14. Spring Boot
 @SpringBootApplication vs @EnableAutoConfiguration: @SpringBootApplication is a wrapper that includes @EnableAutoConfiguration, @ComponentScan, and @Configuration.
 What is Spring Actuator: A sub-project that provides production-ready tools like /health, /metrics, and /env to monitor the app.
@@ -184,6 +200,8 @@ What is auto-configuration: Spring Boot's ability to automatically configure bea
 Common Spring Boot annotations: @RestController, @Service, @Repository, @PathVariable, @RequestBody, @ConditionalOnProperty.
 How SpringBoot implements microservices: Through small, self-contained JARs with embedded servers (Tomcat/Netty) and easy cloud integration.
 Change default auto-configuration: Use the exclude attribute in @SpringBootApplication or set specific properties in application.properties.
+
+
 15. Rest API & Microservices
 Communication: Synchronous (REST, gRPC) or Asynchronous (Kafka, RabbitMQ).
 Microservices patterns: Circuit Breaker, API Gateway, Service Discovery, Config Server, Saga Pattern.
@@ -194,6 +212,8 @@ Redesign Bad API:
 GET /users/{id} (instead of /getUserDetails)
 PATCH /users/{id}/status (instead of /updateUserStatus)
 DELETE /users/{id} (instead of /deleteUserById?id=10)
+
+
 16. Hibernate & JPA
 SessionFactory: A thread-safe, heavy object created once per database; used to open Sessions.
 SessionFactory vs Session: SessionFactory is the factory; Session is the short-lived, non-thread-safe connection to the DB.
@@ -242,10 +262,12 @@ Types of indices in Oracle: B-Tree, Bitmap, Function-Based, Reverse Key, and Glo
 What is a hierarchical query? How to create it: A query that processes parent-child data; in Oracle, it is created using START WITH and CONNECT BY.
 Partitioning and methods of partitioning: Splitting a large table into smaller pieces; methods include Range, List, Hash, and Composite partitioning.
 What is a bitmap index: An index type that uses bit arrays (0s and 1s) to represent data; highly efficient for columns with low cardinality (e.g., Gender, Boolean).
+
+
 18. Unix and Networking
 Do you have experience with UNIX: Yes, I am comfortable using the command line for file management, process monitoring, and server configuration.
 How to get list of running processes: Use the command ps -ef (full list) or top (real-time interactive list).
-How to get thread dump of running java process: Use kill -3 <pid> or the jstack <pid> utility.
+How to get thread dump of running java process: Use kill -3 <pid> or the j-stack <pid> utility.
 Describe grep / tail / less / more: grep (searches for patterns), tail (outputs the last part of a file), less and more (view files page by page).
 Describe difference between TCP and UDP: TCP is reliable and connection-oriented (guarantees order); UDP is fast and connectionless (no guarantee of delivery).
 How to find out free space on the disk: Use the df -h command (disk free, human-readable).
@@ -299,7 +321,7 @@ ps aux: Commonly used on BSD/Linux to see CPU and memory usage.
 top or htop: For a real-time, interactive view.
 Get Thread Dump (Java):
 kill -3 <PID>: Sends a QUIT signal; the dump is usually sent to the standard output (or the log file where stdout is redirected).
-jstack <PID>: The modern Java-specific utility to print a thread dump to the console.
+j-stack <PID>: The modern Java-specific utility to print a thread dump to the console.
 Command Descriptions:
 grep: Global Regular Expression Print. Used to search text for specific patterns.
 tail: Outputs the last part of a file (use tail -f to follow a log in real-time).
@@ -316,7 +338,7 @@ du -sh /path/to/dir: The du (disk usage) command. -s provides a summary of the t
 
 ##############################################################################################
 SQL & Database Management Systems
-Experience with SQL: I am highly proficient in SQL (Standard/ANSI) and its vendor-specific dialects such as PL/SQL (Oracle), T-SQL (SQL Server), and PostgreSQL.
+Experience with SQL: I am highly proficient in SQL (Standard/ANSI) and its vendor-specific dialects such as PL/SQL (Oracle), T-SQL (SQL Server), and PostgresSQL.
 DML vs. DDL:
 DDL (Data Definition Language): Defines the database structure (schema). Commands: CREATE, ALTER, DROP, TRUNCATE.
 DML (Data Manipulation Language): Manages the data within the schema. Commands: SELECT, INSERT, UPDATE, DELETE.
@@ -459,12 +481,12 @@ PUT	Update/Replace	Replaces an entire resource.
 PATCH	Partial Update	Updates specific fields of a resource.
 DELETE	Delete	Removes a resource.
 Redesigning the "Bad" API
-The provided API examples follow an "RPC-style" (Remote Procedure Call) rather than a RESTful style. They use verbs in the URL and query parameters for IDs, which is anti-pattern.
+The provided API examples follow an "RPC-style" (Remote Procedure Call) rather than a REST-ful style. They use verbs in the URL and query parameters for IDs, which is anti-pattern.
 Original (Bad):
 /getUserDetails
 /updateUserStatus
 /deleteUserById?id=10
-Redesigned (RESTful):
+Redesigned (REST-ful):
 Get User: Use the noun and a Path Variable.
 GET /users/{id} (e.g., GET /users/10)
 Update Status: Use PATCH for partial updates or PUT for the sub-resource.
@@ -478,7 +500,7 @@ Note: Proper REST APIs use HTTP status codes (200 OK, 201 Created, 404 Not Found
 ##############################################################################################
 
 Spring Boot
-Experience with Spring Boot: I have extensive knowledge of the Spring Boot ecosystem, including building RESTful services, integrating with Spring Security, and optimizing performance through Spring Cloud.
+Experience with Spring Boot: I have extensive knowledge of the Spring Boot ecosystem, including building REST-ful services, integrating with Spring Security, and optimizing performance through Spring Cloud.
 @SpringBootApplication vs. @EnableAutoConfiguration:
 @EnableAutoConfiguration: This tells Spring Boot to "guess" how you want to configure Spring based on the jar dependencies you added (e.g., if h2.jar is on the classpath, it configures an in-memory database).
 @SpringBootApplication: A "convenience" annotation that bundles three others: @EnableAutoConfiguration, @ComponentScan (to find your beans), and @Configuration (to allow extra bean registration).
@@ -607,7 +629,7 @@ Object-Oriented Programming (OOP) & Design
 Inheritance vs. Composition:
 Inheritance ("is-a"): A class derives from a parent class (e.g., Car extends Vehicle). It allows for polymorphism but creates tight coupling. Changes in the parent often break the child.
 Composition ("has-a"): A class holds an instance of another class as a field (e.g., Car has an Engine). This is flexible and follows the principle of "Favor composition over inheritance," as it allows behavior to be swapped at runtime.
-OOD Principles: Beyond SOLID, common principles include DRY (Don't Repeat Yourself), KISS (Keep It Simple, Stupid), YAGNI (You Ain't Gonna Need It), and Encapsulate what varies.
+OOD Principles: Beyond SOLID, common principles include DRY (Don't Repeat Yourself), KISS (Keep It Simple, Stupid), Y-AGNI (You Ain't Gonna Need It), and Encapsulate what varies.
 Coupling & Cohesion:
 Cohesion: How focused a single module/class is. High Cohesion is good; it means the class does one thing and does it well.
 Coupling: How dependent modules are on each other. Low Coupling is good; it means changes in one module don't force changes in others.
@@ -781,7 +803,7 @@ Disadvantages of a Very Large Heap
 Long GC Pauses: If a "Full GC" occurs, the collector has more memory to scan, leading to longer application freezes.
 OS Paging: If the heap exceeds physical RAM, the OS will swap to disk, destroying performance.
 Utilities for JVM Monitoring
-CLI: jstat (GC stats), jstack (Thread dumps), jmap (Heap dumps), jcmd.
+CLI: jstat (GC stats), j-stack (Thread dumps), j-map (Heap dumps), j-cmd.
 GUI: VisualVM, JConsole, JDK Mission Control (JMC).
 APM: Prometheus/Grafana (via Micrometer), New Relic, Datadog.
 How to monitor GC behavior during execution?
@@ -992,6 +1014,7 @@ Fixing Cyclic Dependencies:
 Redesign: Extract the common logic into a third "mediator" class.
 Setter Injection: (Spring) Inject dependencies after construction.
 Lazy Loading: Use an ObjectProvider or a Proxy to resolve the dependency only when needed.
+
 Static vs. Dynamic Typing:
 Static (Java): Types checked at compile-time.
 Dynamic (Python/JS): Types checked at runtime.
