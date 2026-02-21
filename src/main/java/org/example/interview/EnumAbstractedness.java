@@ -25,7 +25,7 @@ enum Operation {
     public abstract int execute(int x, int y);
 }
 
-public class EnumAbstractmethod {
+public class EnumAbstractedness {
     static void main() {
         Operation op = Operation.ADD;
         int a = op.execute(1, 2);

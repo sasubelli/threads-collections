@@ -10,7 +10,7 @@ public class UpCasting extends Abc {
     }
     @Override
     public void  execute(int a, int b) {
-        System.out.println("execute");
+        System.out.println("execute  :: " + a + " : " + b);
     }
     public static void main(String[] args) {
         Abc upCasting = new UpCasting();

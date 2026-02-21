@@ -1,6 +1,7 @@
 package org.example.interview;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
 
@@ -12,9 +13,11 @@ public final class ImmutableClass {
     public ImmutableClass(int id, String name, List<String> subjects) {
         this.id = id;
         this.name = name;
+        this.subjects = Collections.unmodifiableList(subjects) ;
         // Defensive copy in constructor: prevents external list changes
         // from affecting this object's internal state.
-        this.subjects = new ArrayList<>(subjects);
+       // this.subjects = new ArrayList<>(subjects);
+
     }
 
     public int getId() {
