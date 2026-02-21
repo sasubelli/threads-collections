@@ -18,7 +18,27 @@ public class BinarySearch {
         System.out.println(Collections.binarySearch(list, 3));
         System.out.println(Collections.binarySearch(list, 4));
 
-        System.out.println(Arrays.binarySearch( list.toArray(), 5));
+        System.out.println(Arrays.binarySearch(list.toArray(), 5));
 
+        System.out.println(BinarySearch.binarySearchalgo(list, 6));
+
+        System.out.println(BinarySearch.binarySearchalgo(list, 1));
+        System.out.println(BinarySearch.binarySearchalgo(list, 2));
+        System.out.println(BinarySearch.binarySearchalgo(list, 3));
+    }
+
+    static Integer binarySearchalgo(List<Integer> list, int n) {
+        int low = 0;
+        int high = list.size() - 1;
+        while (low <= high) {
+            int mid = low + (high - low) / 2;
+            if (list.get(mid) >= n) {
+                high = mid - 1;
+            }
+            if (list.get(mid) < n) {
+                low = mid + 1;
+            }
+        }
+        return low;
     }
 }
