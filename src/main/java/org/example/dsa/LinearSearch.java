@@ -15,5 +15,18 @@ public class LinearSearch {
 
 
         System.out.println(list.stream().filter(e -> e.equals(5)).findFirst().get());
+        System.out.println(LinearSearch.linearSearch(list, 5));
+    }
+
+    public static Integer linearSearch(List<Integer> list, int key) {
+        int result = 0;
+        int index = 0;
+        while (index < list.size()) {
+            if (key == list.get(index)) {
+                result = index;
+            }
+            index++;
+        }
+        return result;
     }
 }
