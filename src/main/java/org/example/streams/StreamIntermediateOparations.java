@@ -54,6 +54,6 @@ public class StreamIntermediateOparations {
                 Arrays.asList(9,8,7,6)
         );
 
-        System.out.println("Intermediate Itegers:"+listOfItegers.stream().flatMap(List::stream).distinct().sorted(Comparator.reverseOrder()).toList());
+        System.out.println("Intermediate Integers:"+listOfItegers.stream().flatMap(List::stream).distinct().sorted(Comparator.reverseOrder()).toList());
     }
 }

@@ -6,7 +6,7 @@ import java.util.List;
 import static java.lang.System.*;
 
 public class SecondHighestSalary {
-    public static void main(String[] args) {
+    static void main() {
         Employee e1 = new Employee("John", "Smith", 5000);
         Employee e2 = new Employee("John", "POth", 5500);
         Employee e7 = new Employee("John", "math", 6000);
