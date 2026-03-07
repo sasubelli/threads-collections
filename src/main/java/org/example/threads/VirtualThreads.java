@@ -24,7 +24,7 @@ public class VirtualThreads {
 
         ExecutorService executor = Executors.newVirtualThreadPerTaskExecutor();
         Future<String> stringFuture = Executors.newVirtualThreadPerTaskExecutor().submit(call1);
-        System.out.println(stringFuture.get() + " waiting for stringfuture of callble");
+        System.out.println(stringFuture.get() + " waiting for string future of callable");
         Future<Double> future = executor.submit(() -> {
             // This is a Callable
             System.out.println("Hello from a Virtual Thread! this is callable ");
