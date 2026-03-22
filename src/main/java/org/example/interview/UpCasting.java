@@ -22,7 +22,7 @@ public class UpCasting extends Abc {
         System.out.println(sub.apply(3,4));
 
         Function<Integer, Integer> square = x -> x * x;
-        Function<Integer, String> toString = x -> "Result: " + x;
+        Function<Integer, String> toString = x -> "Result tostring: " + x;
         Function<Integer, String> pipeline2 = square.andThen(s -> "Result: " + s);
         System.out.println(pipeline2.apply(3));
         Function<Integer, String> pipeline = square.andThen(toString);
