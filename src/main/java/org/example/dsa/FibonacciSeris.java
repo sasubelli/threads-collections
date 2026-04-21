@@ -8,7 +8,16 @@ public final class FibonacciSeris {
         System.out.println("Fibonacci sequence up to 10 terms:");
         for (int index = 0; index <= 10; index++) {
             System.out.printf("fib(%d) = %d%n", index, fibonacci(index));
+            System.out.println(FibonacciSeris.fibonacci_recursion(index));
         }
+    }
+
+    public static int fibonacci_recursion(int n) {
+        if (n <= 1 ) {
+            return n;
+        }
+        //recursion to calculate value
+        return fibonacci_recursion(n - 1) + fibonacci_recursion(n - 2);
     }
 
     public static int fibonacci(int n) {
