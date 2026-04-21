@@ -1,32 +1,23 @@
 package org.example.dsa;
 
-import java.util.ArrayList;
 import java.util.List;
 
-public class LinearSearch {
-    public static void main(String[] args) {
-        List<Integer> list = new ArrayList<>();
-        list.add(1);
-        list.add(2);
-        list.add(3);
-        list.add(4);
-        list.add(5);
-        list.add(6);
-
-
-        System.out.println(list.stream().filter(e -> e.equals(5)).findFirst().get());
-        System.out.println(LinearSearch.linearSearch(list, 5));
+public final class LinearSearch {
+    private LinearSearch() {
     }
 
-    public static Integer linearSearch(List<Integer> list, int key) {
-        int result = 0;
-        int index = 0;
-        while (index < list.size()) {
-            if (key == list.get(index)) {
-                result = index;
+    public static void main(String[] args) {
+        List<Integer> values = List.of(1, 2, 3, 4, 5, 6);
+        System.out.println("Index of 5 = " + linearSearch(values, 5));
+        System.out.println("Index of 9 = " + linearSearch(values, 9));
+    }
+
+    public static int linearSearch(List<Integer> values, int key) {
+        for (int index = 0; index < values.size(); index++) {
+            if (values.get(index) == key) {
+                return index;
             }
-            index++;
         }
-        return result;
+        return -1;
     }
 }

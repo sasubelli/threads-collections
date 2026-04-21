@@ -1,6 +1,6 @@
 package org.example.interview;
 
-interface bird {
+interface Bird {
     void say();
 
     void say(int a);
@@ -12,38 +12,40 @@ interface bird {
     void say(int a, int b, int c, int d);
 }
 
-abstract class abstarctbird implements bird {
+abstract class AbstractBird implements Bird {
     @Override
     public void say() {
-        System.out.println("say 0");
+        System.out.println("say()");
     }
 
     @Override
     public void say(int a) {
-        System.out.println("say 1");
+        System.out.println("say(int): " + a);
     }
 
     @Override
     public void say(int a, int b) {
-        System.out.println("say 2");
+        System.out.println("say(int, int): " + a + ", " + b);
     }
 }
 
-public class Interfaceexample extends abstarctbird {
-    static void main() {
-        Interfaceexample obj = new Interfaceexample();
-        obj.say();
-        obj.say(1);
-        obj.say(1, 2);
-        obj.say(1, 2, 3);
-        obj.say(1, 2, 3, 4);
+public class Interfaceexample extends AbstractBird {
+    public static void main(String[] args) {
+        Interfaceexample example = new Interfaceexample();
+        example.say();
+        example.say(1);
+        example.say(1, 2);
+        example.say(1, 2, 3);
+        example.say(1, 2, 3, 4);
     }
 
-    public void say(int a, int b, int c, int d) {
-        System.out.println("say 4");
-    }
-
+    @Override
     public void say(int a, int b, int c) {
-        System.out.println("say 3");
+        System.out.println("say(int, int, int): " + a + ", " + b + ", " + c);
+    }
+
+    @Override
+    public void say(int a, int b, int c, int d) {
+        System.out.println("say(int, int, int, int): " + a + ", " + b + ", " + c + ", " + d);
     }
 }

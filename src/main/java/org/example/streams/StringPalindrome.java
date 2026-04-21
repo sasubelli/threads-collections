@@ -2,10 +2,18 @@ package org.example.streams;
 
 import java.util.List;
 
-public class StringPalindrome {
-    public static void main(String[] args) {
-        List<String> input = List.of(new String[]{"abccba","xyyx", " ", "ewrwer","xyxsed"});
+public final class StringPalindrome {
+    private StringPalindrome() {
+    }
 
-        input.stream().filter(c -> new StringBuilder(c).reverse().toString().equalsIgnoreCase(c)).forEach(System.out::println);
+    public static void main(String[] args) {
+        List<String> words = List.of("abccba", "xyyx", "java", "madam", "stream");
+        words.stream()
+                .filter(StringPalindrome::isPalindrome)
+                .forEach(System.out::println);
+    }
+
+    public static boolean isPalindrome(String value) {
+        return new StringBuilder(value).reverse().toString().equalsIgnoreCase(value);
     }
 }

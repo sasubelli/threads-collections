@@ -1,34 +1,29 @@
 package org.example.leetcode;
 
-public class Leetcodelongeststring {
-    static void main(String[] args) {
-        Leetcodelongeststring leetcode = new Leetcodelongeststring();
-        System.out.printf(String.valueOf(leetcode.lengthOfLongestSubstring("qwewrdxfdfnf")));
+import java.util.HashMap;
+import java.util.Map;
+
+public final class Leetcodelongeststring {
+    public static void main(String[] args) {
+        Leetcodelongeststring solver = new Leetcodelongeststring();
+        System.out.println(solver.lengthOfLongestSubstring("qwewrdxfdfnf"));
+        System.out.println(solver.lengthOfLongestSubstring("abcabcbb"));
     }
 
-    //Given a string s, find the length of the longest substring without duplicate characters.
-    public int lengthOfLongestSubstring(String s) {
+    public int lengthOfLongestSubstring(String value) {
+        int left = 0;
         int max = 0;
-        if (s.length() > 1) {
-            for (int i = 0; i < s.length(); i++) {
-                int left = 0;
-                String sb;
+        Map<Character, Integer> lastSeen = new HashMap<>();
 
-                for (int j = i + 1; j < s.length(); j++) {
-                    sb = s.substring(i, j);
-                    left = left + 1;
-                    max = Math.max(max, left);
-                    if (sb.contains(s.substring(j, j + 1))) {
-                        break;
-                    }
-                    if (j == s.length() - 1) {
-                        max = Math.max(max, left + 1);
-                    }
-                }
+        for (int right = 0; right < value.length(); right++) {
+            char current = value.charAt(right);
+            if (lastSeen.containsKey(current)) {
+                left = Math.max(left, lastSeen.get(current) + 1);
             }
-        } else {
-            max = s.length();
+            lastSeen.put(current, right);
+            max = Math.max(max, right - left + 1);
         }
+
         return max;
     }
 }

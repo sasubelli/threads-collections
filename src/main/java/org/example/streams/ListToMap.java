@@ -1,61 +1,30 @@
 package org.example.streams;
 
-import java.util.*;
+import java.util.List;
+import java.util.Map;
+import java.util.Objects;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 
+public final class ListToMap {
+    private ListToMap() {
+    }
 
-public class ListToMap {
+    public static void main(String[] args) {
+        List<Integer> numbers = List.of(1, 2, 3, 4, 5);
+        Map<Integer, Integer> squares = numbers.stream()
+                .collect(Collectors.toMap(Function.identity(), value -> value * value));
 
+        List<String> words = List.of("One", "Two", "Three", "Four");
+        Map<Integer, String> byLength = words.stream()
+                .collect(Collectors.toMap(String::length, Function.identity(), (left, right) -> left));
 
-    static void main(String[] args) {
-        ArrayList<Integer> listToMap = new ArrayList<>();
-        listToMap.add(1);
-        listToMap.add(2);
-        listToMap.add(3);
-        listToMap.add(4);
-        listToMap.add(5);
-        listToMap.add(6);
-        listToMap.add(7);
-        //convert list o map  Stream
-        Map<Integer, Integer> variable =
-                //Creates a Stream from the collection listToMap
-                listToMap.stream()
-                        //Converts Stream<Integer> → IntStream
-                        //Unboxes Integer to primitive int
-                        .mapToInt(Integer::intValue)
-                        //Converts IntStream back to Stream<Map.Entry<Integer, Integer>>
-                        .mapToObj(x -> new AbstractMap.SimpleEntry<>(x, x * x))
-                        //Collects the stream into a Map
-                        //	•	Map.Entry::getKey → key mapper
-                        //	•	Map.Entry::getValue → value mapper
-                        .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
+        Map<String, Long> frequency = List.of("java", "stream", "java", "map").stream()
+                .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
 
-
-        System.out.println(variable);
-        Map<Integer, Integer> mapvar = listToMap.stream().mapToInt(Integer::intValue)
-                .mapToObj(x -> new AbstractMap.SimpleEntry<>(x, x * x))
-                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
-        System.out.println(mapvar);
-
-        ArrayList<String> listStrtoMap = new ArrayList<>();
-        listStrtoMap.add("One");
-        listStrtoMap.add("Two");
-        listStrtoMap.add(null);
-        listStrtoMap.add("Three");
-        listStrtoMap.add("Four");
-        Map<Integer,String> mapstring = new HashMap<>();
-        for(String s: listStrtoMap){
-            if(s==null){
-                mapstring.put(0, null);
-            }else
-                mapstring.put(s.length(), s) ;
-
-        }
-
-        System.out.println(mapstring);
-        Map<Object, List<String>> mapstring2 = listStrtoMap.stream()
-                .collect(Collectors.groupingBy(String::valueOf));
-        System.out.println(mapstring2);
-
+        System.out.println("Squares = " + squares);
+        System.out.println("By length = " + byLength);
+        System.out.println("Frequency = " + frequency);
+        System.out.println("Non-null values = " + words.stream().filter(Objects::nonNull).toList());
     }
 }

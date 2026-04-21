@@ -1,38 +1,28 @@
 package org.example.threads;
 
+public final class Main {
+    private Main() {
+    }
 
-public class Main {
-    static void main() throws InterruptedException {
-        System.out.println("Active thread count" + Thread.activeCount());
+    public static void main(String[] args) throws InterruptedException {
+        System.out.println("Active thread count before start = " + Thread.activeCount());
 
-        System.out.print("Hello and welcome!");
-        Threadexample threadexample = new Threadexample();
-        threadexample.setPriority(Thread.MAX_PRIORITY);
-        threadexample.start();
+        Threadexample threadExample = new Threadexample();
+        threadExample.setName("Extends-Thread");
 
-        //Runnable Example.
-        Runnbleexample runnbleexample = new Runnbleexample();
-        Thread runnable = new Thread(runnbleexample);
-        runnable.start();
+        Thread runnableThread = new Thread(new Runnbleexample(), "Runnable-Thread");
 
+        Demonthredexample daemonThread = new Demonthredexample();
+        daemonThread.setName("Daemon-Thread");
+        daemonThread.setDaemon(true);
 
-        //Demon Thread Example.
-        Demonthredexample demonthredexample = new Demonthredexample();
-        //setting up demon thread.
-        demonthredexample.setDaemon(true);
-        demonthredexample.start();
+        threadExample.start();
+        runnableThread.start();
+        daemonThread.start();
 
-        System.out.println("Active thread count" + Thread.activeCount());
+        threadExample.join();
+        runnableThread.join();
 
-        threadexample.join();
-        runnable.join();
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
-        }
-        Thread.sleep(1000);
-        System.out.println("Active thread count" + Thread.activeCount());
-        // demonthredexample.start();
+        System.out.println("Active thread count after joins = " + Thread.activeCount());
     }
 }

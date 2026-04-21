@@ -5,38 +5,35 @@ import java.util.function.Function;
 
 public class UpCasting extends Abc {
     @Override
-    public  void display() {
-        System.out.println("display");
+    public void display() {
+        System.out.println("Child display()");
     }
+
     @Override
-    public void  execute(int a, int b) {
-        System.out.println("execute  :: " + a + " : " + b);
+    public void execute(int a, int b) {
+        System.out.println("Child execute(): " + a + " + " + b + " = " + (a + b));
     }
+
     public static void main(String[] args) {
-        Abc upCasting = new UpCasting();
-        upCasting.display();
-        upCasting.execute(1,2);
+        Abc reference = new UpCasting();
+        reference.display();
+        reference.execute(4, 5);
+
         BiFunction<Integer, Integer, Integer> add = Integer::sum;
-        BiFunction<Integer, Integer, Integer> sub =(a,b) ->a-b;
-        System.out.println(add.apply(3,4));
-        System.out.println(sub.apply(3,4));
+        BiFunction<Integer, Integer, Integer> subtract = (a, b) -> a - b;
+        Function<Integer, Integer> square = value -> value * value;
+        Function<Integer, String> describe = result -> "Result: " + result;
 
-        Function<Integer, Integer> square = x -> x * x;
-        Function<Integer, String> toString = x -> "Result tostring: " + x;
-        Function<Integer, String> pipeline2 = square.andThen(s -> "Result: " + s);
-        System.out.println(pipeline2.apply(3));
-        Function<Integer, String> pipeline = square.andThen(toString);
-        System.out.println(pipeline.apply(5));
-
-
+        System.out.println("Add = " + add.apply(3, 4));
+        System.out.println("Subtract = " + subtract.apply(9, 2));
+        System.out.println(square.andThen(describe).apply(5));
     }
 }
-  abstract class Abc {
 
+abstract class Abc {
     public void display() {
-        System.out.println("display1");
-
+        System.out.println("Parent display()");
     }
 
-    public abstract void execute(int a, int b) ;
+    public abstract void execute(int a, int b);
 }

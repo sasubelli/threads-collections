@@ -3,8 +3,13 @@ package org.example.interview;
 import java.util.List;
 
 public record TestRecord(Integer id, String name, List<String> subjects) {
-     static void main(String[] args) {
-        TestRecord ts = new TestRecord(1, "Chandra", List.of(new String[]{"Maths", "physics"}));
-System.out.println(ts);
+    public TestRecord {
+        subjects = List.copyOf(subjects);
+    }
+
+    public static void main(String[] args) {
+        TestRecord record = new TestRecord(1, "Chandra", List.of("Maths", "Physics"));
+        System.out.println(record);
+        System.out.println("Subjects are immutable: " + record.subjects());
     }
 }

@@ -1,35 +1,32 @@
 package org.example.threads;
 
-
+import java.util.concurrent.BrokenBarrierException;
 import java.util.concurrent.CyclicBarrier;
 
-public class CyclicBarrierDemo {
+public final class CyclicBarrierDemo {
+    private CyclicBarrierDemo() {
+    }
+
     public static void main(String[] args) {
-        // A barrier for 3 threads with a task that runs when they all arrive
-        CyclicBarrier barrier = new CyclicBarrier(3, () ->
-                System.out.println("\n--- All threads arrived! Proceeding to next step ---\n")
-        );
+        CyclicBarrier barrier = new CyclicBarrier(3,
+                () -> System.out.println("--- All workers completed phase 1 ---"));
 
         Runnable worker = () -> {
             try {
                 String name = Thread.currentThread().getName();
-                System.out.println(name + " is working on Phase 1...");
-                Thread.sleep(1000); // Simulate work
-
-                // Wait for others
+                System.out.println(name + " working on phase 1");
+                Thread.sleep(300);
                 barrier.await();
-
-                System.out.println(name + " is starting Phase 2...");
-            } catch (Exception e) {
-                e.printStackTrace();
+                System.out.println(name + " working on phase 2");
+            } catch (InterruptedException exception) {
+                Thread.currentThread().interrupt();
+            } catch (BrokenBarrierException exception) {
+                System.out.println("Barrier broken: " + exception.getMessage());
             }
         };
 
-        new Thread(worker, "Thread-1").start();
-        new Thread(worker, "Thread-2").start();
-        new Thread(worker, "Thread-3").start();
-        new Thread(worker, "Thread-4").start();
-        new Thread(worker, "Thread-5").start();
-        new Thread(worker, "Thread-6").start();
+        for (int index = 1; index <= 6; index++) {
+            new Thread(worker, "Worker-" + index).start();
+        }
     }
 }

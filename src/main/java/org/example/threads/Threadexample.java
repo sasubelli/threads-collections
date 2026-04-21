@@ -4,16 +4,13 @@ public class Threadexample extends Thread {
     @Override
     public void run() {
         try {
-            int i = 0;
-            while (i <= 4) {
-                System.out.println(this.getName());
-                Thread.sleep(1000);
-                i++;
-                System.out.println("Thread Example Class :   " + this);
+            for (int index = 1; index <= 3; index++) {
+                System.out.println(getName() + " iteration " + index);
+                Thread.sleep(250);
             }
-        } catch (Exception e) {
-            throw new RuntimeException(e);
+            System.out.println(getName() + " completed");
+        } catch (InterruptedException exception) {
+            Thread.currentThread().interrupt();
         }
-        System.out.println(this.getName() + "\n execution completed.");
     }
 }

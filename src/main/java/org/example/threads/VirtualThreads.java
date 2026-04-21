@@ -1,38 +1,26 @@
 package org.example.threads;
 
-import java.util.concurrent.*;
+import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Future;
 
-public class VirtualThreads {
+public final class VirtualThreads {
+    private VirtualThreads() {
+    }
 
+    public static void main(String[] args) throws InterruptedException, ExecutionException {
+        Thread virtualThread = Thread.ofVirtual().start(() ->
+                System.out.println("Hello from virtual thread: " + Thread.currentThread()));
+        virtualThread.join();
 
-    static void main() throws InterruptedException, ExecutionException {
-        Runnable task = () -> {
-            System.out.println("Hello from a Virtual Thread!");
-            System.out.println("Current Thread: " + Thread.currentThread());
+        try (ExecutorService executor = java.util.concurrent.Executors.newVirtualThreadPerTaskExecutor()) {
+            Callable<String> task = () -> "Callable executed on " + Thread.currentThread();
+            Future<String> message = executor.submit(task);
+            Future<Double> price = executor.submit(() -> 10.456);
 
-        };
-        Thread vThread = Thread.ofVirtual().start(task);
-        vThread.join();
-        //Thread.sleep(1000);
-
-        Callable<String> call1 = new Callable<String>() {
-            public String call() throws Exception {
-
-                return "Hello from a Virtual Thread! from callable -----`";
-            }
-        };
-
-        ExecutorService executor = Executors.newVirtualThreadPerTaskExecutor();
-        Future<String> stringFuture = Executors.newVirtualThreadPerTaskExecutor().submit(call1);
-        System.out.println(stringFuture.get() + " waiting for string future of callable");
-        Future<Double> future = executor.submit(() -> {
-            // This is a Callable
-            System.out.println("Hello from a Virtual Thread! this is callable ");
-            return 10.456; //"Hello from a virtual thread";
-        });
-
-        Double result = future.get();
-        System.out.println(result);
-        executor.close();
+            System.out.println(message.get());
+            System.out.println("Price = " + price.get());
+        }
     }
 }

@@ -1,18 +1,19 @@
 package org.example.oops;
 
-public class TestMain {
+public final class TestMain {
+    private TestMain() {
+    }
+
     public static void main(String[] args) {
+        RecordTest record = new RecordTest(1, "Chandra", 20);
+        System.out.println("Record: " + record);
+        System.out.println("Summary: " + record.summary());
 
-        //Record testing
-        RecordTest recordTest= new RecordTest(1,"chan",20);
-        System.out.println(recordTest + "   ID:"+ recordTest.id() + "   Name:"+recordTest.name() + "   Age:"+recordTest.age());
+        InterfaceImpl implementation = new InterfaceImpl();
+        implementation.display();
+        implementation.display2();
+        BaseInterface.staticDisplay3();
 
-        //Interface Testing
-         InterfaceImpl interfaceImpl = new InterfaceImpl();
-         interfaceImpl.display();
-         interfaceImpl.display2();
-         BaseInterface.staticDisplay3();
-
-
+        new Testclass().display();
     }
 }

@@ -1,22 +1,24 @@
 package org.example.interview;
 
-interface A {
-    class B {
-        void printMessage(int a) {
-            System.out.println(a);
-        }
-    }
-}
-
-public class AnonymosInnerclass implements A {
-
-    public AnonymosInnerclass() {
-        B b = new B();
-        b.printMessage(1);
+public final class AnonymosInnerclass {
+    private AnonymosInnerclass() {
     }
 
-    static void main() {
-        AnonymosInnerclass a = new AnonymosInnerclass();
+    interface Greeting {
+        void print(String name);
+    }
 
+    public static void main(String[] args) {
+        Greeting anonymous = new Greeting() {
+            @Override
+            public void print(String name) {
+                System.out.println("Hello from anonymous class, " + name);
+            }
+        };
+
+        Greeting lambda = name -> System.out.println("Hello from lambda, " + name);
+
+        anonymous.print("Java");
+        lambda.print("Interview");
     }
 }

@@ -1,19 +1,16 @@
 package org.example.solidprinciple;
 
-
-import java.util.ArrayList;
 import java.util.List;
 
-//instead of override getArea method in  square we should implement from abstract method.
 abstract class Shape {
     abstract double getArea();
 }
 
-class Rectangle extends Shape {
+final class Rectangle extends Shape {
     private final int width;
     private final int height;
 
-    public Rectangle(int width, int height) {
+    Rectangle(int width, int height) {
         this.width = width;
         this.height = height;
     }
@@ -24,11 +21,11 @@ class Rectangle extends Shape {
     }
 }
 
-class Square extends Shape {
-    int side;
+final class Square extends Shape {
+    private final int side;
 
-    public Square(int length) {
-        this.side = length;
+    Square(int side) {
+        this.side = side;
     }
 
     @Override
@@ -37,32 +34,25 @@ class Square extends Shape {
     }
 }
 
-class Areacalculator {
-    //instead of using rectangle class use Shape class to access both square and rectangles.
-    double getTotalArea(List<Shape> list) {
-        double totalArea = 0.0;
-        for (Shape shape : list) {
-            totalArea += shape.getArea();
-        }
-        return totalArea;
+final class AreaCalculator {
+    double getTotalArea(List<Shape> shapes) {
+        return shapes.stream().mapToDouble(Shape::getArea).sum();
     }
 }
 
-public class Liskovprinciple {
-    static void main() {
-        Areacalculator areacalculator = new Areacalculator();
-        List<Shape> list = new ArrayList<>();
-        list.add(new Rectangle(10, 20));
-        list.add(new Rectangle(10, 20));
-        list.add(new Rectangle(10, 20));
-        list.add(new Rectangle(10, 20));
-        list.add(new Rectangle(10, 20));
-        list.add(new Square(10));
-        list.add(new Square(20));
-        list.add(new Square(30));
+public final class Liskovprinciple {
+    private Liskovprinciple() {
+    }
 
-        areacalculator.getTotalArea(list);
-        System.out.println("total Area " + areacalculator.getTotalArea(list));
+    public static void main(String[] args) {
+        List<Shape> shapes = List.of(
+                new Rectangle(10, 20),
+                new Rectangle(5, 6),
+                new Square(10),
+                new Square(20)
+        );
 
+        AreaCalculator calculator = new AreaCalculator();
+        System.out.println("Total area = " + calculator.getTotalArea(shapes));
     }
 }

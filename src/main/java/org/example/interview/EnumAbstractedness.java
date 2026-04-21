@@ -2,22 +2,29 @@ package org.example.interview;
 
 enum Operation {
     ADD {
+        @Override
         public int execute(int a, int b) {
             return a + b;
         }
     },
     SUB {
+        @Override
         public int execute(int a, int b) {
             return a - b;
         }
     },
     MUL {
+        @Override
         public int execute(int a, int b) {
             return a * b;
         }
     },
     DIV {
+        @Override
         public int execute(int a, int b) {
+            if (b == 0) {
+                throw new IllegalArgumentException("Cannot divide by zero");
+            }
             return a / b;
         }
     };
@@ -25,24 +32,13 @@ enum Operation {
     public abstract int execute(int x, int y);
 }
 
-public class EnumAbstractedness {
-    static void main() {
-        Operation op = Operation.ADD;
-        int a = op.execute(1, 2);
-        System.out.println(a);
-        Operation op2 = Operation.SUB;
-        int b = op2.execute(3, 2);
-        System.out.println(b);
-        Operation op3 = Operation.MUL;
-        int c = op3.execute(1, 2);
-        System.out.println(c);
-        Operation op4 = Operation.DIV;
-        int d = op4.execute(4, 2);
-        System.out.println(d);
+public final class EnumAbstractedness {
+    private EnumAbstractedness() {
+    }
 
+    public static void main(String[] args) {
+        for (Operation operation : Operation.values()) {
+            System.out.println(operation + " => " + operation.execute(8, 2));
+        }
     }
 }
-
-
-
-

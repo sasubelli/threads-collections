@@ -3,14 +3,14 @@ package org.example.threads;
 public class Demonthredexample extends Thread {
     @Override
     public void run() {
-        while (true) {
+        for (int index = 1; index <= 3; index++) {
             try {
-                Thread.sleep(1000);
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
+                Thread.sleep(200);
+                System.out.println("Daemon heartbeat from " + getName() + " #" + index);
+            } catch (InterruptedException exception) {
+                Thread.currentThread().interrupt();
+                return;
             }
-            System.out.println("demon thread running" + this.getName());
-            System.out.println(this);
         }
     }
 }

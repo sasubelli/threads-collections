@@ -1,16 +1,31 @@
 package org.example.dsa;
 
-public class FibonacciSeris {
+public final class FibonacciSeris {
+    private FibonacciSeris() {
+    }
+
     public static void main(String[] args) {
-        for (int i = 0; i <= 10; i++) {
-            System.out.println(Fibonacci(i )+ " ");
+        System.out.println("Fibonacci sequence up to 10 terms:");
+        for (int index = 0; index <= 10; index++) {
+            System.out.printf("fib(%d) = %d%n", index, fibonacci(index));
         }
     }
-    public static int Fibonacci(int n) {
-        if (n <= 1 ) {
+
+    public static int fibonacci(int n) {
+        if (n < 0) {
+            throw new IllegalArgumentException("n must be >= 0");
+        }
+        if (n <= 1) {
             return n;
         }
-        //recursion to calculate value
-        return Fibonacci(n - 1) + Fibonacci(n - 2);
+
+        int previous = 0;
+        int current = 1;
+        for (int index = 2; index <= n; index++) {
+            int next = previous + current;
+            previous = current;
+            current = next;
+        }
+        return current;
     }
 }
