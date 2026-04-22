@@ -21,7 +21,13 @@ public final class ImmutableClass {
         return name;
     }
 
+    /**
+     * Defensive copy in getter: prevents callers from modifying
+     * the internal list after retrieving it.
+     */
     public List<String> getSubjects() {
+        //violation code commented
+        //return new ArrayList<>(subjects);
         return List.copyOf(subjects);
     }
 

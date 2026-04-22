@@ -23,8 +23,8 @@ public final class SemaphoreExample {
                 } catch (InterruptedException exception) {
                     Thread.currentThread().interrupt();
                 } finally {
-                    connectionPool.release();
                     System.out.println("Worker " + workerId + " released permit");
+                    connectionPool.release();
                 }
             });
         }
